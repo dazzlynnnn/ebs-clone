@@ -66,17 +66,20 @@ const ImgCardWrapper = styled.div`
 	grid-template-rows: 170px 170px 170px;
 `
 
-const ImgCard = styled.div`
+const ImgCard = styled.button`
   background-color: white;
   border-radius: 12px;
   box-shadow: 0px 5px 10px 0px rgba(97,97,97,0.25);
   height:150px;
   width: 200px;
   outline: none;
+  border: none;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  :hover{
+    background-color: gray;
+  }
 `
 
 
