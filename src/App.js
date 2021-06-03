@@ -4,12 +4,21 @@ import styled from "styled-components";
 import pengsu from "./assets/pengsu.png";
 import search from "./assets/search.png";
 import search_ad from "./assets/search_ad.png";
-import menu from "./assets/menu.png";
+import menuImg from "./assets/menu.png";
 import epick from "./assets/epick.png";
 import logo from "./assets/logo.png";
 import cost_center from "./assets/cost_center.png";
 import bn_footer from "./assets/bn_footer.png";
 import adban from "./assets/adban.png";
+import yaho from "./assets/yaho.png";
+import soluni from "./assets/soluni.png";
+import youtube from "./assets/youtube.png";
+import facebook from "./assets/facebook.png";
+import insta from "./assets/insta.png";
+import kakao from "./assets/kakao.png";
+import blog from "./assets/blog.png";
+import arrow from "./assets/arrow.png";
+
 import ImgCard from "./components/ImgCard";
 import Card from "./components/Card";
 
@@ -53,6 +62,7 @@ const Button2 = styled.button`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin: 0;
 `
 
@@ -123,9 +133,19 @@ const Menu = styled.a`
   width: 160px;
   outline: none;
   border: 1px solid lightgray;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  font-size: 18px;
+  line-height: 25px;
+  color: #55585c;
+  text-decoration: none;
+  margin-bottom: 10px;
   :active{
-    background-color: blue;
+    background-color: #4E81C0;
+  }
+  :focus{
+    background-color: #4E81C0;
   }
 `
 
@@ -133,6 +153,16 @@ const LinkWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;  
+`
+
+const Link = styled.button`
+  align-self: flex-start;
+  background-color: #FFFFFF;
+  background-size: 100%;
+  border: none;
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
 `
 
 const Footer = styled.div`
@@ -163,26 +193,48 @@ const Button4 = styled.button`
   background-color: #FFFFFF;
   border: none;
 `
+const Button5 = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+background-color: #FFFFFF;
+border: none;
+border-radius: 50px;
+height: 45;
+width: 120px;
+font-size: 16px;
+`   
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imgCards: [{link:"http://ebs.co.kr", tag:"초등"}, {link:"http://ebs.co.kr", tag:"ebs"}],
-      cards: [{link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}]
+      imgCards: [{link:"http://ebs.co.kr", tag:"초등"}, {link:"http://ebs.co.kr", tag:"초등"},{link:"http://ebs.co.kr", tag:"초등"},{link:"http://ebs.co.kr", tag:"초등"},{link:"http://ebs.co.kr", tag:"초등"},{link:"http://ebs.co.kr", tag:"초등"},{link:"http://ebs.co.kr", tag:"초등"},{link:"http://ebs.co.kr", tag:"초등"}],
+      cards: [{link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}, {link:"http://ebs.co.kr", name:"초등"}],
+      notice_1: [{article:"1-1번 글"}, {article:"1-2번 글"}, {article:"1-3번 글"}, {article:"1-4번 글"}, {article:"1-5번 글"}],
+      notice_2: [{article:"2-1번 글"}, {article:"2-2번 글"}, {article:"2-3번 글"}, {article:"2-4번 글"}, {article:"2-5번 글"}],
+      notice_3: [{article:"3-1번 글"}, {article:"3-2번 글"}, {article:"3-3번 글"}, {article:"3-4번 글"}, {article:"3-5번 글"}],
+      menu: 0
     }
   }
-  setSelected = (tab) => {
-    this.setState({ selected: tab });
+  
+  menuChange = (change) => {
+    this.setState({menu: change})
   }
 
   render() {
-    const {imgCards, cards} = this.state;
+    const {imgCards, cards, menu} = this.state;
+    const contents = {
+      0: this.state.notice_1,
+      1: this.state.notice_2,
+      2: this.state.notice_3,
+    }
     return(
       <Wrapper>
 
         <Header1>
-          <Button1 style = {{marginLeft: '120px'}}><img src={menu} alt='menu'/></Button1>
+          <Button1 style = {{marginLeft: '120px'}}><img src={menuImg} alt='menu'/></Button1>
           <Button1>장애인 서비스</Button1>
           <Button1>두리안(다문화)</Button1>
           <Button1 style = {{marginLeft: "735px"}}>로그인</Button1>
@@ -232,27 +284,36 @@ class App extends React.Component {
             </CardWrapper>
           </Container>
 
-          <img src={adban} width='920px' height='100px' alt='adban'></img>
+          <img src={adban} width='1000px' height='100px' alt='adban' style={{marginTop:"40px", marginBottom:"25px"}}></img>
         </Center>
 
         <Navigation>
-
-          <Wrapper>
-
+          <Wrapper style={{marginLeft: "80px"}}>
+            <Menu id='target0' onClick={()=>this.menuChange(0)}>서비스 공지</Menu>
+            <Menu id='target1' onClick={()=>this.menuChange(1)}>편성 공지</Menu>
+            <Menu id='target2' onClick={()=>this.menuChange(2)}>EBS 공고</Menu>
           </Wrapper>
-          <Wrapper>
-            
+          <Wrapper style={{width: "350px"}}>
+            <ul>
+              {contents[menu].map(content => (
+                <li>{content.article}</li>
+              ))}
+            </ul>
           </Wrapper>
           <Wrapper>
               <LinkWrapper>
-                <Menu> EBS 앱 </Menu>
-                <Menu></Menu>
-                <Menu></Menu>
+                <Button5>EBS 앱<img width="20px" src={arrow} alt="arrow" style={{width:"15px", marginLeft: "6px", marginBottom:"2px"}}></img></Button5>
+                <Link><img src={blog} width="25px" alt="blog"></img></Link>
+                <Link><img src={facebook} width="25" alt="facebook"></img></Link>
+                <Link><img src={kakao} width="25" alt="kakao"></img></Link>
+                <Link><img src={youtube} width="25" alt="youtube"></img></Link>
+                <Link><img src={insta} width="25" alt="insta"></img></Link>
               </LinkWrapper>
-              <img></img>
+              <img src={yaho} width="420px" alt="yaho" style={{marginTop: "20px"}}/>
           </Wrapper>
-          <img></img>
-
+          <Wrapper>
+            <img src={soluni} width="300px" height="205px" alt="soluni" style={{marginLeft: "50px"}}/>
+          </Wrapper>
         </Navigation>
 
         <Footer height="58px">

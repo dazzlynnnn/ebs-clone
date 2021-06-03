@@ -11,3 +11,12 @@ input {
     font-weight: 540;
     /*폰트 적용 필요*/
 }
+img {
+    object-fit: cover;
+}
+
+li {
+    font-size: 18px;
+    margin-bottom: 9px;
+    list-style-type: circle;
+}
